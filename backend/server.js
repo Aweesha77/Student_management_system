@@ -7,3 +7,8 @@ const dotenv=require("dotenv");
 const app=express();
 
 const PORT=process.env.PORT || 8070;
+
+app.use(corse());
+app.use(bodyParser.json);
+
+const URL=process.env.MOGODB_URL;
