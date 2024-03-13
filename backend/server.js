@@ -24,6 +24,9 @@ connection.once("open", () => {
     console.log("MongoDB connection succeeded"); 
 });
 
+const studentRouter=require("./routes/students.js");
+app.use("students", studentRouter);
+
 app.listen(PORT, () => {
     console.log(`server is up and running on port number: ${PORT}`)
 });
