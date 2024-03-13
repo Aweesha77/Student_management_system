@@ -25,6 +25,7 @@ connection.once("open", () => {
 });
 
 const studentRouter=require("./routes/students.js");
+
 app.use("students", studentRouter);
 
 app.listen(PORT, () => {
