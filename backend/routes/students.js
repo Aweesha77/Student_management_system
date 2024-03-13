@@ -1,6 +1,8 @@
 const express=require("express");
 let Student=require("../models/student");
 
+const router = express.Router();
+
 router.route("/add").post((req,res) => {
     const name=req.body.name;
     const age=Number(req.body.age);
@@ -40,7 +42,7 @@ router.route("/update/:id").put(async(req,res) => {
 
     const update=await Student.findByIdAndUpdate(userId,updateStudent)
     .then(()=>{
-        res.status(200).send({status:"User updated",user:update})
+        res.status(200).send({status:"User updated"})
     }).catch((err)=>{
         console.log(err);
         res.status(500).send({status:"Error with updating data",error:err.message});
@@ -61,11 +63,11 @@ router.route("/delete/:id").delete(async(req,res) => {
 })
 
 
-router.route("/get/:id").delete(async(req,res) => {
+router.route("/get/:id").get(async(req,res) => {
     let userId=req.params.id;
     await Student.findById(userId)
-    .then(()=>{
-        res.status(200).send({status:"User fetched",user:user});
+    .then((Student)=>{
+        res.status(200).send({status:"User fetched",Student});
     }).catch((err)=>{
         console.log(err);
         res.status(500).send({status:"Error with get user",error:err.message});
