@@ -21,7 +21,7 @@ mongoose.connect(URL, {
 
 const connection = mongoose.connection;
 connection.once("open", () => {
-    console.log("MongoDB connection succeeded"); 
+    console.log("MongoDB connection succeeded and used"); 
 });
 
 const studentRouter=require("./routes/students.js");
@@ -31,3 +31,4 @@ app.use("/student", studentRouter);
 app.listen(PORT, () => {
     console.log(`server is up and running on port number: ${PORT}`)
 }); 
+
